@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Kevin Zabala | Tech VA Portfolio</title>
+  <style>
+    :root {
+      --beige: #f5f5dc;
+      --dark-grey: #2f2f2f;
+      --accent: #0077cc;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--beige);
+      color: var(--dark-grey);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('sj6TFagFSY2A0etHp2d4iw.webp') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    body.dark-mode {
+      background-color: var(--dark-grey);
+      color: var(--beige);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(47, 47, 47, 0.95);
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--beige);
+      cursor: pointer;
+    }
+    .nav-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--beige);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .toggle-dark-mode {
+      background: var(--beige);
+      color: var(--dark-grey);
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+    .profile-photo {
+      position: fixed;
+      top: 140px;
+      right: 40px;
+      width: 213px;
+      height: 213px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--beige);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .profile-photo.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    header {
+      margin-top: 150px;
+      text-align: right;
+      padding: 40px;
+      color: white;
+    }
+    header h1, header p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    header.visible h1, header.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section {
+      max-width: 800px;
+      margin: 100px auto 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">John Kevin Zabala</div>
+    <div class="nav-links">
+      <a href="#projects">My Projects</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#skills">My Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle-dark-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+  </nav>
+
+  <img class="profile-photo visible" src="proile photo.png" alt="Profile Photo">
+
+  <header class="visible">
+    <h1>Hello, I’m John Kevin Zabala</h1>
+    <p>Welcome to my Tech VA portfolio. Scroll down to explore more!</p>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>With 12 years of experience in the corporate world driving sales excellence through project management, process creation, optimization, and continuous improvement initiatives. Proven track record in leading cross-functional teams, implementing scalable processes, and enhancing operational efficiency.</p>
+    <p>Now transitioning as a Tech VA to achieve my personal goals like work-from-home flexibility and better work-life balance while still making meaningful contributions through automation and system design.</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <p>[Project carousel or tiles will go here]</p>
+  </section>
+
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <p>[Client reviews, star ratings, and photos go here]</p>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <p>[Tool logos, platform logos, skill ratings, etc.]</p>
+  </section>
+
+  <section id="game">
+    <h2>Guess That Tool</h2>
+    <p>[Game will be embedded here with logos and interactive features]</p>
+  </section>
+
+  <section id="contact">
+    <h2>Let's Get In Touch</h2>
+    <p>Phone: +639 60 219 6680<br>Email: jkevin.zabala@gmail.com<br>Location: Manila, Philippines</p>
+    <p>[Lead form will go here]</p>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    });
+    document.querySelectorAll('section, header, .profile-photo').forEach(el => observer.observe(el));
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
